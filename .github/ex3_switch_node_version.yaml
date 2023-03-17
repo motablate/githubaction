@@ -1,6 +1,5 @@
-name: Node version in Var
-on: 
-  workflow_dispatch:
+name: interact with Github API
+on:
   pull_request:
 
 env:
@@ -15,10 +14,9 @@ jobs:
           uses: actions/setup-node@v3
           with:
             node-version: ${{env.NODE_VERSION}}
-        - name: run version
-          run: node -v
-        - name: run install + test
+        - name: run test
           shell: bash
-          run: |        
+          run: |
+            node -v
             npm install
             npm test
