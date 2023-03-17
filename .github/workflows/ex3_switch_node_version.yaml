@@ -1,0 +1,20 @@
+name: Switch Node version
+on: 
+  pull_request:
+
+jobs:
+  run-npm-test:
+    runs-on: ubuntu-latest
+    steps:
+        - name: checkout
+          uses: actions/checkout@v3
+        - name : setup node
+          uses: actions/setup-node@v3
+          with:
+            node-version: $NODE_VERSION
+        - name: run test
+          shell: bash
+          run: |
+            node -v
+            npm install
+            npm test
